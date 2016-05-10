@@ -1,7 +1,8 @@
 # hbase-utils
 At feedly we ran into a situation where hbase's log sync latency kept incresasing. We used the code in this repo to help diagnose the problem.
+It runs on hbase 0.94/hadoop 1.1.
 
-As a brief refresher, the hbase write path consist of immediately writing a log entry of the data to hdfs and then buffering the write in 
+As a brief refresher, the hbase write path consists of immediately writing a log entry of the data to hdfs and then buffering the write in 
 memory in the memstore. At some later point, the memstore is flushed to disk as immutable files. The purpose of the log sync is to be able to
 gracefully recover from region server crashes.
 
